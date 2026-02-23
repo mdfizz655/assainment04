@@ -9,6 +9,7 @@ let jobs = [
     { id: 8, companyName: "Adobe", position: "Creative Software Developer", location: "San Jose, CA", type: "Full-time", salary: "$115k - $145k", description: "Innovating digital design tools like Photoshop and Illustrator.", status: "applied" }
 ];
 
+
 let currentTab = 'all';
 
 
@@ -27,6 +28,7 @@ function renderJobs() {
         emptyState.classList.add('hidden');
     }
 
+
     filteredJobs.forEach(job => {
         const card = document.createElement('div');
         card.className = "bg-white p-8 rounded-[32px] shadow-sm border border-gray-50 flex flex-col md:flex-row items-center gap-6 relative hover:shadow-md transition-all";
@@ -38,9 +40,11 @@ function renderJobs() {
                         <h4 class="text-xl font-extrabold text-gray-800">${job.companyName}</h4>
                         <p class="text-indigo-600 font-bold text-sm mb-3">${job.position}</p>
                     </div>
+
                     <button onclick="deleteJob(${job.id})" class="text-gray-300 hover:text-red-500 transition px-2">
                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                     </button>
+
                 </div>
                 
                 <div class="flex flex-wrap gap-4 text-xs font-bold text-gray-400 uppercase mb-4">
@@ -57,17 +61,22 @@ function renderJobs() {
                     class="flex-1 md:w-36 py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all ${job.status === 'interview' ? 'bg-orange-500 text-white shadow-lg' : 'bg-orange-50 text-orange-600 hover:bg-orange-100'}">
                     Interview
                 </button>
+
                 <button onclick="updateStatus(${job.id}, 'rejected')" 
                     class="flex-1 md:w-36 py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all ${job.status === 'rejected' ? 'bg-red-500 text-white shadow-lg' : 'bg-red-50 text-red-600 hover:bg-red-100'}">
                     Rejected
                 </button>
+
             </div>
         `;
         container.appendChild(card);
     });
 
+
+
     updateDashboard();
 }
+
 
 function updateStatus(id, newStatus) {
     jobs = jobs.map(job => {
