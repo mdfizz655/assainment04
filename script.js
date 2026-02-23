@@ -93,3 +93,16 @@ function updateDashboard() {
     let currentCount = currentTab === 'all' ? jobs.length : jobs.filter(j => j.status === currentTab).length;
     document.getElementById('section-count').innerText = currentCount;
 }
+
+function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('button[id^="tab-"]').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('text-gray-400');
+    });
+    document.getElementById(`tab-${tab}`).classList.add('tab-active');
+    document.getElementById(`tab-${tab}`).classList.remove('text-gray-400');
+    renderJobs();
+}
+
+renderJobs();
