@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" />
+    <style>
+        .tab-active { border-bottom: 3px solid #4F46E5; color: #4F46E5; font-weight: 700; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#F8F9FC] min-h-screen">
+
+    <div class="max-w-5xl mx-auto p-6 md:p-12">
+
+        <header class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Job Application Tracker</h1>
+        </header>
+
+       
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-1">Total Applied</p>
+                <h2 id="total-count" class="text-4xl font-black text-gray-800">0</h2>
+            </div>
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-1">Interviewing</p>
+                <h2 id="interview-count" class="text-4xl font-black text-orange-500">0</h2>
+            </div>
+            <div class="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-1">Rejected</p>
+                <h2 id="rejected-count" class="text-4xl font-black text-red-500">0</h2>
+            </div>
+        </div>
+
+       
+
+        <div class="flex justify-between items-end mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">Available Jobs</h3>
+            <p class="text-gray-500 font-bold">Jobs Found: <span id="section-count" class="text-indigo-600">0</span></p>
+        </div>
+
+
+       
+        <div class="flex gap-10 mb-8 border-b overflow-x-auto">
+            <button onclick="switchTab('all')" id="tab-all" class="tab-active pb-4 px-1 text-sm uppercase tracking-widest whitespace-nowrap">All Jobs</button>
+            <button onclick="switchTab('interview')" id="tab-interview" class="text-gray-400 pb-4 px-1 text-sm uppercase tracking-widest hover:text-indigo-600 transition whitespace-nowrap">Interview</button>
+            <button onclick="switchTab('rejected')" id="tab-rejected" class="text-gray-400 pb-4 px-1 text-sm uppercase tracking-widest hover:text-indigo-600 transition whitespace-nowrap">Rejected</button>
+        </div>
+
+
+       
+
+        <div id="job-container" class="space-y-4">
+        </div>
+
+
+       
+         
+        <div id="empty-state" class="hidden flex flex-col items-center justify-center py-24 bg-white rounded-[32px] border border-dashed border-gray-200">
+            <img src="./jobs.png" class="w-28 mb-6 opacity-60" alt="Empty State">
+            <h4 class="text-2xl font-bold text-gray-400 uppercase tracking-widest">No jobs Available</h4>
+            <p class="text-gray-400 mt-2 font-medium">Try moving some applications to this category.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
