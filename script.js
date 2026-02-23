@@ -78,30 +78,3 @@ function updateStatus(id, newStatus) {
     });
     renderJobs();
 }
-
-function deleteJob(id) {
-    jobs = jobs.filter(job => job.id !== id);
-    renderJobs();
-}
-
-function updateDashboard() {
-    document.getElementById('total-count').innerText = jobs.length;
-    document.getElementById('interview-count').innerText = jobs.filter(j => j.status === 'interview').length;
-    document.getElementById('rejected-count').innerText = jobs.filter(j => j.status === 'rejected').length;
-    
-    let currentCount = currentTab === 'all' ? jobs.length : jobs.filter(j => j.status === currentTab).length;
-    document.getElementById('section-count').innerText = currentCount;
-}
-
-function switchTab(tab) {
-    currentTab = tab;
-    document.querySelectorAll('button[id^="tab-"]').forEach(btn => {
-        btn.classList.remove('tab-active');
-        btn.classList.add('text-gray-400');
-    });
-    document.getElementById(`tab-${tab}`).classList.add('tab-active');
-    document.getElementById(`tab-${tab}`).classList.remove('text-gray-400');
-    renderJobs();
-}
-
-renderJobs();
